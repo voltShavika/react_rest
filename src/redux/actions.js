@@ -16,6 +16,9 @@ export const DELETE_POST_REQ = "DELETE_POST_REQ";
 export const DELETE_POST_SUC = "DELETE_POST_SUC";
 export const DELETE_POST_ERR = "DELETE_POST_ERR";
 
+export const SHOW_MODAL = "SHOW_MODAL";
+export const CLOSE_MODAL = "CLOSE_MODAL";
+
 export const fetchPostsReq = () => {
     return {
         type: FETCH_POSTS_REQ
@@ -116,5 +119,18 @@ export const callDeletePostApi = (postIndex) => {
         .catch(error => {
             dispatch(deletePostErr(error))
         })
+    }
+}
+
+export const showModal = (postIndex) => {
+    return {
+        type: SHOW_MODAL,
+        payload: postIndex
+    }
+}
+
+export const closeModal = () => {
+    return {
+        type: CLOSE_MODAL
     }
 }

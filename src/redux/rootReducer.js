@@ -1,11 +1,14 @@
-import { CREATE_POST_ERR, CREATE_POST_REQ, CREATE_POST_SUC, DELETE_POST_ERR, DELETE_POST_REQ, DELETE_POST_SUC, FETCH_POSTS_ERR, FETCH_POSTS_REQ, FETCH_POSTS_SUC } from "./actions";
+import { CLOSE_MODAL, CREATE_POST_ERR, CREATE_POST_REQ, CREATE_POST_SUC, DELETE_POST_ERR, DELETE_POST_REQ, DELETE_POST_SUC, FETCH_POSTS_ERR, FETCH_POSTS_REQ, FETCH_POSTS_SUC, SHOW_MODAL } from "./actions";
 
 const initialState = {
     loggedIn: false,
     email: "",
     posts: [],
     loading: false,
-    errors: []
+    errors: [],
+
+    showModal: false,
+    postIndexToEdit: -1
 }
 
 const rootReducer = (state=initialState, action) => {
@@ -64,6 +67,16 @@ const rootReducer = (state=initialState, action) => {
             ...state,
             loading: false,
             errors: [...action.payload],
+        }
+        case SHOW_MODAL: return {
+            ...state,
+            postIndexToEdit: action.payload,
+            showModal: true
+        }
+        case CLOSE_MODAL: return {
+            ...state,
+            postIndexToEdit: -1,
+            showModal: false
         }
         default: return state
 

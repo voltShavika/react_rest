@@ -2,7 +2,8 @@ import React, {useEffect, useRef} from 'react'
 import Post from './Post'
 
 import {useSelector, useDispatch} from 'react-redux'
-import { callCreatePostApi, callFetchPostsApi } from '../redux/actions'
+import { callCreatePostApi, callFetchPostsApi, showModal } from '../redux/actions'
+import EditPost from './EditPost';
 
 export default function Home() {
 
@@ -44,6 +45,8 @@ export default function Home() {
         </div>
         <br/>
         <h2>All Posts</h2>
+        <EditPost />
+        <button onClick={()=> dispatch(showModal(2))} className='btn btn-danger'>Update</button>
         <hr/>
         <div className='row'>
             {
