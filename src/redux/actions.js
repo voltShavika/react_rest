@@ -134,3 +134,42 @@ export const closeModal = () => {
         type: CLOSE_MODAL
     }
 }
+
+
+export const updatePostReq = () => {
+    return {
+        type: UPDATE_POST_REQ
+    }
+}
+
+export const updatePostSuc = (postIndex, post) => {
+    return {
+        type: UPDATE_POST_SUC,
+        pIndex: postIndex,
+        payload: post
+    }
+}
+
+export const updatePostErr = () => {
+    return {
+        type: UPDATE_POST_ERR
+    }
+}
+
+export const callUpdatePostApi = (postIndex, ptitle, pbody) => {
+    return (dispatch) => {
+        dispatch(updatePostReq());
+        axios.patch("https://jsonplaceholder.typicode.com/posts/1", {
+            title: ptitle,
+            body: pbody
+        })
+        .then(res => {
+            dispatch(updatePostSuc(postIndex, res.data))
+            dispatch(closeModal());
+        })
+        .catch(error => {
+            dispatch(updatePostErr(error))
+            dispatch(closeModal())
+        })
+    }
+}

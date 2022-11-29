@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import {useSelector, useDispatch} from 'react-redux'
-import { closeModal } from '../redux/actions';
+import { closeModal, callUpdatePostApi } from '../redux/actions';
 
 export default function EditPost() {
 
@@ -26,6 +26,13 @@ export default function EditPost() {
         data = posts[postIndexToEdit]
     }
 
+    const handleEdit = () => {
+        var ptitle = titleRef.current.value;
+        var pbody = bodyRef.current.value;
+        dispatch(callUpdatePostApi(postIndexToEdit, ptitle, pbody))
+
+    }
+
     return (
     <Modal show={showModal} onHide={()=> dispatch(closeModal())} backdrop="static" keyboard="false">
         <Modal.Header closeButton>
@@ -45,7 +52,7 @@ export default function EditPost() {
             <Button variant="secondary" onClick={()=> dispatch(closeModal())}>
                 Discard
             </Button>
-            <Button variant="primary" onClick={()=> dispatch(closeModal())}>
+            <Button variant="primary" onClick={handleEdit}>
                 Post It
             </Button>
         </Modal.Footer>
