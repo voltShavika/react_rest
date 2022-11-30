@@ -2,6 +2,8 @@
 
 This project demonstrate REST API calls on Fake API [https://jsonplaceholder.typicode.com/posts]
 
+### Project has Google Signin enabled
+
 ## How to Setup ?
 
 1. `git clone https://github.com/voltShavika/react_rest`
