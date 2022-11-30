@@ -1,5 +1,10 @@
 import axios from 'axios'
 
+export const LOGIN_REQ = "LOGIN_REQ";
+export const LOGIN_SUC = "LOGIN_SUC";
+export const LOGIN_ERR = "LOGIN_ERR";
+export const LOGOUT_REQ = "LOGOUT_REQ";
+
 export const FETCH_POSTS_REQ = "FETCH_POSTS_REQ";
 export const FETCH_POSTS_SUC = "FETCH_POSTS_SUC";
 export const FETCH_POSTS_ERR = "FETCH_POSTS_ERR";
@@ -18,6 +23,31 @@ export const DELETE_POST_ERR = "DELETE_POST_ERR";
 
 export const SHOW_MODAL = "SHOW_MODAL";
 export const CLOSE_MODAL = "CLOSE_MODAL";
+
+export const loginReq = () => {
+    return {
+        type: LOGIN_REQ
+    }
+}
+
+export const loginSuc = (user) => {
+    return {
+        type: LOGIN_SUC,
+        payload: user
+    }
+}
+
+export const loginErr = () => {
+    return {
+        type: LOGIN_ERR
+    }
+}
+
+export const logoutReq = () => {
+    return {
+        type: LOGOUT_REQ
+    }
+}
 
 export const fetchPostsReq = () => {
     return {

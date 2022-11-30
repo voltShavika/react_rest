@@ -36,7 +36,7 @@ export default function EditPost() {
     return (
     <Modal show={showModal} onHide={()=> dispatch(closeModal())} backdrop="static" keyboard="false">
         <Modal.Header closeButton>
-            <Modal.Title>Update Post : Id</Modal.Title>
+            <Modal.Title>Update Post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <div className="mb-3">
@@ -53,7 +53,7 @@ export default function EditPost() {
                 Discard
             </Button>
             <Button variant="primary" onClick={handleEdit}>
-                Post It
+                Update
             </Button>
         </Modal.Footer>
     </Modal>
